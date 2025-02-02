@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>오늘 하루 착한 가격으로 놀아볼까?</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="파비콘.png" />
+    <!-- Kakao Map API -->
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=902d4e0f0111b2f8bc5410404332a0ad&libraries=services"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="goodstore.css" />
+    <script src="goodstore.js" defer></script>
+    <style></style>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <header class="header">
+        <div class="header-logo">
+          <img src="파비콘.png" alt="로고" />
+          <h1>오늘 하루 착한 가격으로 놀아볼까?</h1>
+        </div>
+        <button id="darkModeToggle" class="dark-mode-btn">🌙</button>
+        <div class="header-controls">
+          <div id="auth-buttons">
+            <button class="auth-btn" onclick="login()">로그인</button>
+            <button class="auth-btn" onclick="signup()">회원가입</button>
+          </div>
+        </div>
+      </header>
+
+      <div id="container">
+        <div id="categoryContainer">
+          <select id="districtSelect">
+            <option value="">구를 선택하세요</option>
+          </select>
+          <div class="category-grid">
+            <!-- 카테고리 버튼들이 여기에 추가됩니 -->
+          </div>
+        </div>
+        <div id="map-container">
+          <div id="map"></div>
+        </div>
+        <div id="storeList"></div>
+      </div>
+    </div>
+
+    <!-- 인증 모달 -->
+    <div id="authModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('authModal')">&times;</span>
+
+        <!-- 로그인 폼 -->
+        <div id="loginForm" class="auth-form">
+          <h2 style="text-align: center; margin-bottom: 20px">로그인</h2>
+          <div class="form-group">
+            <label for="loginEmail">이메일</label>
+            <input
+              type="email"
+              id="loginEmail"
+              placeholder="이메일을 입력하세요"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">비밀번호</label>
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="비밀번호를 입력하세요"
+              required
+            />
+          </div>
+          <button onclick="submitLogin()" class="form-submit">로그인</button>
+        </div>
+
+        <!-- 회원가입 폼 -->
+        <div id="signupForm" class="auth-form" style="display: none">
+          <h2 style="text-align: center; margin-bottom: 20px">회원가입</h2>
+          <div class="form-group">
+            <label for="signupName">이름</label>
+            <input
+              type="text"
+              id="signupName"
+              placeholder="이름을 입력하세요"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="signupEmail">이메일</label>
+            <input
+              type="email"
+              id="signupEmail"
+              placeholder="이메일을 입력하세요"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="signupPassword">비밀번호</label>
+            <input
+              type="password"
+              id="signupPassword"
+              placeholder="비밀번호를 입력하세요"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="signupPasswordConfirm">비밀번호 확인</label>
+            <input
+              type="password"
+              id="signupPasswordConfirm"
+              placeholder="비밀번호를 다시 입력하세요"
+              required
+            />
+          </div>
+          <button onclick="submitSignup()" class="form-submit">회원가입</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
